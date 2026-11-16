@@ -1,0 +1,24 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build-and-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build and start
+        run: docker compose up -d --build
+
+      - name: Check health
+        run: |
+          sleep 5
+          curl -f http://localhost:8080/health
+
+      - name: Stop
+        if: always()
+        run: docker compose down
