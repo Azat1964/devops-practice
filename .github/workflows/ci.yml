@@ -19,6 +19,10 @@ jobs:
           sleep 5
           curl -f http://localhost:8080/health
 
+       - name: Show logs on failure
+        if: failure()
+        run: docker compose logs
+
       - name: Stop
         if: always()
         run: docker compose down
