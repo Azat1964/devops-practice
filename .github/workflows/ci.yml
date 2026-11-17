@@ -19,7 +19,7 @@ jobs:
           sleep 5
           curl -f http://localhost:8080/nope
 
-       - name: Show logs on failure
+      - name: Show logs on failure
         if: failure()
         run: docker compose logs
 
