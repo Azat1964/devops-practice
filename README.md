@@ -7,3 +7,4 @@
 Запуск: `docker compose up -d`
 
 Проверка: `curl localhost:8080/health` должен ответить `ok`.
+тест
